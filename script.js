@@ -92,27 +92,49 @@ function choice() {
             if (parents) {
                 derasVal = parseInt(Math.random() * 100);
                 console.log(derasVal);
-                if (derasVal > 30) {
-                    document.getElementById("happen").innerHTML =
-                        "GODIS!!"
-                    document.getElementById("choices").innerHTML =
-                        " Godis!"
+                if (apartment) {
+                    if (derasVal > 30) {
+                        document.getElementById("happen").innerHTML =
+                            "GODIS!!"
+                        document.getElementById("choices").innerHTML =
+                            "Vampyrparet ger er äpplen att bita i"
+                    } else {
+                        document.getElementById("happen").innerHTML =
+                            "BUUUUS!!"
+                        document.getElementById("choices").innerHTML =
+                            " Bus!"
+                    }
                 } else {
-                    document.getElementById("happen").innerHTML =
-                        "BUUUUS!!"
-                    document.getElementById("choices").innerHTML =
-                        " Bus!"
+                    if (derasVal > 30) {
+                        document.getElementById("happen").innerHTML =
+                            "GODIS!!"
+                        document.getElementById("choices").innerHTML =
+                            "Paret och taxen ger er läskiga karameller"
+                    } else {
+                        document.getElementById("happen").innerHTML =
+                            "BUUUUS!!"
+                        document.getElementById("choices").innerHTML =
+                            " Bus!"
+                    }
                 }
             } else {
                 document.getElementById("happen").innerHTML =
                     "Föräldrarna är med så därför blir det inget bus, utan GODIS!!"
-                document.getElementById("choices").innerHTML =
-                    " Godis!"
+                if (apartment) {
+                    document.getElementById("choices").innerHTML =
+                        "Vampyrparet ger er äpplen att bita i"
+                } else {
+                    document.getElementById("choices").innerHTML =
+                        "Paret och taxen ger er läskiga karameller"
+                }
             }
+            clear();
+            break;
 
 
 
     }
+
 
 
 
