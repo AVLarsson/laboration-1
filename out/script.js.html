@@ -30,11 +30,12 @@
 
 const choice1 = "Du ska välja en utklädnad \n*spöke *häxa *zombie";
 
+const none = "";
 
 /**
  * Represents game initialization.
- * Happen - feed with game events.
- * Choices - feed with user alternatives.
+ * Happen - Feed with game events.
+ * Choices - Feed with user alternatives.
  */
 function gameStart() {
     document.getElementById("happen").innerHTML = story1;
@@ -46,11 +47,11 @@ function gameStart() {
  * Removes text from input field.
  */
 function clear() {
-    document.getElementById("userInput").value = "";
+    document.getElementById("userInput").value = none;
 }
 /**
  * 
- * @param {Number} event - checks all keyboard activity for enter press.
+ * @param {Number} event - Checks all keyboard activity for enter press.
  */
 function go(event) {
     if (event.keyCode == 13 || event.which == 13) {
@@ -67,13 +68,15 @@ function choice() {
     switch (inputText) {
         case "start":
             gameStart();
+            document.getElementById("thanks").innerHTML =
+                none;
             clear();
             break;
 
         case "spöke":
             costume = "spökdräkt";
             document.getElementById("choices").innerHTML =
-                "Du tar på dig ett gammalt vitt lakarn och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
+                "Du tar på dig ett gammalt vitt lakan och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
             clear();
             break;
 
@@ -90,11 +93,12 @@ function choice() {
                 "Du tar på dig en läskig zombiedräkt med självlysande ögonlinser. Vill ni gå med eller utan föräldrar?";
             clear();
             break;
-            /* Sets the global parameter parents to either true or false depending on inputText */
+
+            /* Sets the boolean parents to either true or false depending on inputText */
         case "med":
             parents = true;
             document.getElementById("happen").innerHTML =
-                "Några av kompisarna är för rädda för att gå själva så några av föräldrarna följer med";
+                "Några av kompisarna är för rädda för att gå själva, så föräldrarna följer med.";
             document.getElementById("choices").innerHTML =
                 "Ni går in mot stan. Du har på dig din " + costume + ". Vill ni börja med att gå till en lägenhet eller villa?";
             clear();
@@ -103,16 +107,17 @@ function choice() {
         case "utan":
             parents = false;
             document.getElementById("happen").innerHTML =
-                "Nu när ni är superläskiga så är ni redo för att gå iväg på ert årliga bus eller godis";
+                "Nu när ni är superläskiga är ni redo för att gå iväg på ert årliga bus eller godis!";
             document.getElementById("choices").innerHTML =
                 "Ni går in mot stan. Du har på dig din " + costume + ". Vill ni börja med att gå till en lägenhet eller villa?";
             clear();
             break;
 
+            /* Sets the boolean apartment to either true or false depending on inputText */
         case "lägenhet":
             apartment = true;
             document.getElementById("happen").innerHTML =
-                "Ni går till en lägenhet där en kvinna och en man öppnar dörren och är utklädda till vampyrer.";
+                "Ni går till en lägenhet där en kvinna och en man öppnar dörren som är utklädda till blodiga vampyrer.";
             document.getElementById("choices").innerHTML =
                 "Fråga efter bus eller godis!";
             clear();
@@ -132,28 +137,33 @@ function choice() {
                 derasVal = parseInt(Math.random() * 100);
                 console.log(derasVal);
                 if (apartment) {
-                    if (derasVal > 30) {
+                    if (derasVal > 40) {
                         document.getElementById("happen").innerHTML =
                             "GODIS!!"
                         document.getElementById("choices").innerHTML =
-                            "Vampyrparet ger er äpplen att bita i"
+                            "Vampyrparet ger er smaskiga äpplen att bita i. Ni går nu hem med färre hål i tänderna."
+                        document.getElementById("thanks").innerHTML =
+                            "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                     } else {
                         document.getElementById("happen").innerHTML =
                             "BUUUUS!!"
                         document.getElementById("choices").innerHTML =
-                            " Bus!"
+                            "Ert hemska bus är att kasta ett varsit ägg på dörren. Så kasta ägg!"
                     }
                 } else {
-                    if (derasVal > 30) {
+                    if (derasVal > 40) {
                         document.getElementById("happen").innerHTML =
                             "GODIS!!"
                         document.getElementById("choices").innerHTML =
-                            "Paret och taxen ger er läskiga karameller"
+                            "Paret och taxen ger er några nävar läskiga karameller. Ni delar upp dem jämnt och springer hem med fulla påsar."
+                        document.getElementById("thanks").innerHTML =
+                            "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                     } else {
                         document.getElementById("happen").innerHTML =
                             "BUUUUS!!"
                         document.getElementById("choices").innerHTML =
-                            " Bus!"
+                            "Ert hemska bus är att kasta ett varsit ägg på dörren. Så kasta ägg!"
+
                     }
                 }
             } else {
@@ -161,14 +171,56 @@ function choice() {
                     "Föräldrarna är med så därför blir det inget bus, utan GODIS!!"
                 if (apartment) {
                     document.getElementById("choices").innerHTML =
-                        "Vampyrparet ger er äpplen att bita i"
+                        "Vampyrparet ger er äpplen att bita i. Ni går nu hem med färre hål i tänderna."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 } else {
                     document.getElementById("choices").innerHTML =
-                        "Paret och taxen ger er läskiga karameller"
+                        "Paret och taxen ger er några nävar läskiga karameller. Ni delar upp dem jämnt och springer hem med fulla påsar."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 }
             }
             clear();
             break;
+
+        case "kasta ägg":
+            throwEgg = parseInt(Math.random() * 100);
+            console.log(throwEgg);
+
+            if (apartment) {
+                if (throwEgg > 50) {
+                    document.getElementById("happen").innerHTML =
+                        "Efter att sista ägget har kastats så kommer vampyrparet argt utspringandes och börjar jaga er!"
+                    document.getElementById("choices").innerHTML =
+                        "Dom kommer ikapp och ni får städa upp röran. Dom ringer era föräldrar som kommer och hämtar er, och där slutar årets sista bus."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
+                } else {
+                    document.getElementById("happen").innerHTML =
+                        "Efter att sista ägget har kastats så springer ni iväg ner för första trappan i lägenhetshuset, ingen verkar ha märkt om vad som har hänt. Ni är nöjda med årets bus och går hem med stora flin."
+                    document.getElementById("choices").innerHTML =
+                        none;
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
+                }
+            } else {
+                if (throwEgg > 50) {
+                    document.getElementById("happen").innerHTML =
+                        "Efter att sista ägget har kastats så kommer det gamla paret argt utpringandes och taxen börjar jaga er!"
+                    document.getElementById("choices").innerHTML =
+                        "Taxen kommer ikapp och jagar tillbaka er till villan. Ni får städa upp röran och be om ursäkt till det äldre paret. Dom ringer era föräldrar som kommer och hämtar er och där slutar årets sista bus."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
+                } else {
+                    document.getElementById("happen").innerHTML =
+                        "Efter att sista ägget har kastats så springer ni runt husknuten, väntar där en stund för att se om kusten är klar. Ni hör några voff! Sedan ingenting mer. Ni kom undan med buset och går hem med stora flin."
+                    document.getElementById("choices").innerHTML =
+                        none;
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
+                }
+            }
 
 
 
@@ -182,8 +234,7 @@ function choice() {
 
 
 
-
-    /* Here is my testcode with just "if" :-) i thougt "case" was easier to work with.
+    /* Here is a small part of my testcode with "if" :-), i thougt "switch" was more fun to work with.
     
     if (inputText == "start") {
         gameStart();
@@ -191,7 +242,7 @@ function choice() {
 
     if (inputText == "spöke") {
         document.getElementById("choices").innerHTML =
-            "Du tar på dig ett gammalt vitt lakarn och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
+            "Du tar på dig ett gammalt vitt lakan och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
 
     }
 
@@ -223,7 +274,7 @@ function choice() {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Nov 04 2019 11:41:51 GMT+0100 (centraleuropeisk normaltid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Nov 04 2019 19:29:51 GMT+0100 (centraleuropeisk normaltid)
 </footer>
 
 <script> prettyPrint(); </script>

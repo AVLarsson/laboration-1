@@ -6,8 +6,8 @@ const none = "";
 
 /**
  * Represents game initialization.
- * Happen - feed with game events.
- * Choices - feed with user alternatives.
+ * Happen - Feed with game events.
+ * Choices - Feed with user alternatives.
  */
 function gameStart() {
     document.getElementById("happen").innerHTML = story1;
