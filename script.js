@@ -2,6 +2,7 @@ const story1 = "Ett gäng barn ska gå bus eller godis. Du är ett av barnen.";
 
 const choice1 = "Du ska välja en utklädnad \n*spöke *häxa *zombie";
 
+const none = "";
 
 /**
  * Represents game initialization.
@@ -18,7 +19,7 @@ function gameStart() {
  * Removes text from input field.
  */
 function clear() {
-    document.getElementById("userInput").value = "";
+    document.getElementById("userInput").value = none;
 }
 /**
  * 
@@ -39,6 +40,8 @@ function choice() {
     switch (inputText) {
         case "start":
             gameStart();
+            document.getElementById("thanks").innerHTML =
+                none;
             clear();
             break;
 
@@ -62,11 +65,12 @@ function choice() {
                 "Du tar på dig en läskig zombiedräkt med självlysande ögonlinser. Vill ni gå med eller utan föräldrar?";
             clear();
             break;
-            /* Sets the global parameter parents to either true or false depending on inputText */
+
+            /* Sets the boolean parents to either true or false depending on inputText */
         case "med":
             parents = true;
             document.getElementById("happen").innerHTML =
-                "Några av kompisarna är för rädda för att gå själva, så föräldrarna följer med";
+                "Några av kompisarna är för rädda för att gå själva, så föräldrarna följer med.";
             document.getElementById("choices").innerHTML =
                 "Ni går in mot stan. Du har på dig din " + costume + ". Vill ni börja med att gå till en lägenhet eller villa?";
             clear();
@@ -81,6 +85,7 @@ function choice() {
             clear();
             break;
 
+            /* Sets the boolean apartment to either true or false depending on inputText */
         case "lägenhet":
             apartment = true;
             document.getElementById("happen").innerHTML =
@@ -104,11 +109,13 @@ function choice() {
                 derasVal = parseInt(Math.random() * 100);
                 console.log(derasVal);
                 if (apartment) {
-                    if (derasVal > 30) {
+                    if (derasVal > 40) {
                         document.getElementById("happen").innerHTML =
                             "GODIS!!"
                         document.getElementById("choices").innerHTML =
-                            "Vampyrparet ger er äpplen att bita i"
+                            "Vampyrparet ger er smaskiga äpplen att bita i. Ni går nu hem med färre hål i tänderna."
+                        document.getElementById("thanks").innerHTML =
+                            "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                     } else {
                         document.getElementById("happen").innerHTML =
                             "BUUUUS!!"
@@ -116,16 +123,19 @@ function choice() {
                             "Ert hemska bus är att kasta ett varsit ägg på dörren. Så kasta ägg!"
                     }
                 } else {
-                    if (derasVal > 30) {
+                    if (derasVal > 40) {
                         document.getElementById("happen").innerHTML =
                             "GODIS!!"
                         document.getElementById("choices").innerHTML =
-                            "Paret och taxen ger er några nävar läskiga karameller"
+                            "Paret och taxen ger er några nävar läskiga karameller. Ni delar upp dem jämnt och springer hem med fulla påsar."
+                        document.getElementById("thanks").innerHTML =
+                            "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                     } else {
                         document.getElementById("happen").innerHTML =
                             "BUUUUS!!"
                         document.getElementById("choices").innerHTML =
                             "Ert hemska bus är att kasta ett varsit ägg på dörren. Så kasta ägg!"
+
                     }
                 }
             } else {
@@ -134,9 +144,13 @@ function choice() {
                 if (apartment) {
                     document.getElementById("choices").innerHTML =
                         "Vampyrparet ger er äpplen att bita i. Ni går nu hem med färre hål i tänderna."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 } else {
                     document.getElementById("choices").innerHTML =
                         "Paret och taxen ger er några nävar läskiga karameller. Ni delar upp dem jämnt och springer hem med fulla påsar."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 }
             }
             clear();
@@ -152,11 +166,15 @@ function choice() {
                         "Efter att sista ägget har kastats så kommer vampyrparet argt utspringandes och börjar jaga er!"
                     document.getElementById("choices").innerHTML =
                         "Dom kommer ikapp och ni får städa upp röran. Dom ringer era föräldrar som kommer och hämtar er, och där slutar årets sista bus."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 } else {
                     document.getElementById("happen").innerHTML =
                         "Efter att sista ägget har kastats så springer ni iväg ner för första trappan i lägenhetshuset, ingen verkar ha märkt om vad som har hänt. Ni är nöjda med årets bus och går hem med stora flin."
                     document.getElementById("choices").innerHTML =
-                        ""
+                        none;
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 }
             } else {
                 if (throwEgg > 50) {
@@ -164,18 +182,21 @@ function choice() {
                         "Efter att sista ägget har kastats så kommer det gamla paret argt utpringandes och taxen börjar jaga er!"
                     document.getElementById("choices").innerHTML =
                         "Taxen kommer ikapp och jagar tillbaka er till villan. Ni får städa upp röran och be om ursäkt till det äldre paret. Dom ringer era föräldrar som kommer och hämtar er och där slutar årets sista bus."
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 } else {
                     document.getElementById("happen").innerHTML =
                         "Efter att sista ägget har kastats så springer ni runt husknuten, väntar där en stund för att se om kusten är klar. Ni hör några voff! Sedan ingenting mer. Ni kom undan med buset och går hem med stora flin."
                     document.getElementById("choices").innerHTML =
-                        ""
+                        none;
+                    document.getElementById("thanks").innerHTML =
+                        "Hoppas att du hade en rolig upplevelse, skriv start för att börja om. Annars är ditt bus eller godis slut för iår."
                 }
             }
 
 
 
     }
-
 
 
 
