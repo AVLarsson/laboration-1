@@ -5,7 +5,6 @@ I den här laborationen ska man skapa en textbaserad interaktiv upplevelse där 
 Här blir du ett av barnen som ska gå sitt fantastiska årliga bus eller godis. Du får välja mellan olika alternativ som tar dig framåt i den mystiska världen. Hoppas du får tag på mest godis av alla. 
 
 # Repo
-
-
+https://github.com/AVLarsson/laboration-1
 # Demo
-
+https://avlarsson.github.io/laboration-1/
