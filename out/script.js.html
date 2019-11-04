@@ -1,4 +1,32 @@
-const story1 = "Ett gäng barn ska gå bus eller godis. Du är ett av barnen.";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const story1 = "Ett gäng barn ska gå bus eller godis. Du är ett av barnen.";
 
 const choice1 = "Du ska välja en utklädnad \n*spöke *häxa *zombie";
 
@@ -22,7 +50,7 @@ function clear() {
 }
 /**
  * 
- * @param {Number} event - Checks all keyboard activity for enter press.
+ * @param {Number} event - checks all keyboard activity for enter press.
  */
 function go(event) {
     if (event.keyCode == 13 || event.which == 13) {
@@ -45,7 +73,7 @@ function choice() {
         case "spöke":
             costume = "spökdräkt";
             document.getElementById("choices").innerHTML =
-                "Du tar på dig ett gammalt vitt lakan och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
+                "Du tar på dig ett gammalt vitt lakarn och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
             clear();
             break;
 
@@ -66,7 +94,7 @@ function choice() {
         case "med":
             parents = true;
             document.getElementById("happen").innerHTML =
-                "Några av kompisarna är för rädda för att gå själva, så föräldrarna följer med";
+                "Några av kompisarna är för rädda för att gå själva så några av föräldrarna följer med";
             document.getElementById("choices").innerHTML =
                 "Ni går in mot stan. Du har på dig din " + costume + ". Vill ni börja med att gå till en lägenhet eller villa?";
             clear();
@@ -75,7 +103,7 @@ function choice() {
         case "utan":
             parents = false;
             document.getElementById("happen").innerHTML =
-                "Nu när ni är superläskiga är ni redo för att gå iväg på ert årliga bus eller godis!";
+                "Nu när ni är superläskiga så är ni redo för att gå iväg på ert årliga bus eller godis";
             document.getElementById("choices").innerHTML =
                 "Ni går in mot stan. Du har på dig din " + costume + ". Vill ni börja med att gå till en lägenhet eller villa?";
             clear();
@@ -84,7 +112,7 @@ function choice() {
         case "lägenhet":
             apartment = true;
             document.getElementById("happen").innerHTML =
-                "Ni går till en lägenhet där en kvinna och en man öppnar dörren som är utklädda till blodiga vampyrer.";
+                "Ni går till en lägenhet där en kvinna och en man öppnar dörren och är utklädda till vampyrer.";
             document.getElementById("choices").innerHTML =
                 "Fråga efter bus eller godis!";
             clear();
@@ -113,19 +141,19 @@ function choice() {
                         document.getElementById("happen").innerHTML =
                             "BUUUUS!!"
                         document.getElementById("choices").innerHTML =
-                            "Ert hemska bus är att kasta ett varsit ägg på dörren. Så kasta ägg!"
+                            " Bus!"
                     }
                 } else {
                     if (derasVal > 30) {
                         document.getElementById("happen").innerHTML =
                             "GODIS!!"
                         document.getElementById("choices").innerHTML =
-                            "Paret och taxen ger er några nävar läskiga karameller"
+                            "Paret och taxen ger er läskiga karameller"
                     } else {
                         document.getElementById("happen").innerHTML =
                             "BUUUUS!!"
                         document.getElementById("choices").innerHTML =
-                            "Ert hemska bus är att kasta ett varsit ägg på dörren. Så kasta ägg!"
+                            " Bus!"
                     }
                 }
             } else {
@@ -133,44 +161,14 @@ function choice() {
                     "Föräldrarna är med så därför blir det inget bus, utan GODIS!!"
                 if (apartment) {
                     document.getElementById("choices").innerHTML =
-                        "Vampyrparet ger er äpplen att bita i. Ni går nu hem med färre hål i tänderna."
+                        "Vampyrparet ger er äpplen att bita i"
                 } else {
                     document.getElementById("choices").innerHTML =
-                        "Paret och taxen ger er några nävar läskiga karameller. Ni delar upp dem jämnt och springer hem med fulla påsar."
+                        "Paret och taxen ger er läskiga karameller"
                 }
             }
             clear();
             break;
-
-        case "kasta ägg":
-            throwEgg = parseInt(Math.random() * 100);
-            console.log(throwEgg);
-
-            if (apartment) {
-                if (throwEgg > 50) {
-                    document.getElementById("happen").innerHTML =
-                        "Efter att sista ägget har kastats så kommer vampyrparet argt utspringandes och börjar jaga er!"
-                    document.getElementById("choices").innerHTML =
-                        "Dom kommer ikapp och ni får städa upp röran. Dom ringer era föräldrar som kommer och hämtar er, och där slutar årets sista bus."
-                } else {
-                    document.getElementById("happen").innerHTML =
-                        "Efter att sista ägget har kastats så springer ni iväg ner för första trappan i lägenhetshuset, ingen verkar ha märkt om vad som har hänt. Ni är nöjda med årets bus och går hem med stora flin."
-                    document.getElementById("choices").innerHTML =
-                        ""
-                }
-            } else {
-                if (throwEgg > 50) {
-                    document.getElementById("happen").innerHTML =
-                        "Efter att sista ägget har kastats så kommer det gamla paret argt utpringandes och taxen börjar jaga er!"
-                    document.getElementById("choices").innerHTML =
-                        "Taxen kommer ikapp och jagar tillbaka er till villan. Ni får städa upp röran och be om ursäkt till det äldre paret. Dom ringer era föräldrar som kommer och hämtar er och där slutar årets sista bus."
-                } else {
-                    document.getElementById("happen").innerHTML =
-                        "Efter att sista ägget har kastats så springer ni runt husknuten, väntar där en stund för att se om kusten är klar. Ni hör några voff! Sedan ingenting mer. Ni kom undan med buset och går hem med stora flin."
-                    document.getElementById("choices").innerHTML =
-                        ""
-                }
-            }
 
 
 
@@ -185,7 +183,7 @@ function choice() {
 
 
 
-    /* Here is a small part of my testcode with "if" :-), i thougt "switch" was more fun to work with.
+    /* Here is my testcode with just "if" :-) i thougt "case" was easier to work with.
     
     if (inputText == "start") {
         gameStart();
@@ -193,7 +191,7 @@ function choice() {
 
     if (inputText == "spöke") {
         document.getElementById("choices").innerHTML =
-            "Du tar på dig ett gammalt vitt lakan och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
+            "Du tar på dig ett gammalt vitt lakarn och förvandlas till ett spöke. Vill ni gå med eller utan föräldrar?";
 
     }
 
@@ -209,4 +207,26 @@ function choice() {
             "Du tar på dig en läskig zombiedräkt med självlysande ögonlinser. Vill ni gå med eller utan föräldrar?";
 
     }*/
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#choice">choice</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#gameStart">gameStart</a></li><li><a href="global.html#go">go</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Nov 04 2019 11:41:51 GMT+0100 (centraleuropeisk normaltid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
